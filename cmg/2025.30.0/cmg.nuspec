@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>cmg</id>
+    <version>2025.30.0</version>
+    <title>CMG</title>
+    <authors>CMG</authors>
+    <description>Instalador do CMG</description>
+    <tags>cmg instalador</tags>
+    <dependencies>
+      <dependency id="dotnetfx" />
+      <dependency id="vcredist2010" />
+      <dependency id="vcredist2013" />
+      <dependency id="vcredist140" />
+    </dependencies>
+  </metadata>
+</package>

@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>alfasim</id>
+    <version>2025.2.1</version>
+    <title>ALFAsim</title>
+    <authors>ESSS</authors>
+    <description>Instalador do ALFAsim</description>
+    <tags>alfasim instalador</tags>
+  </metadata>
+</package>

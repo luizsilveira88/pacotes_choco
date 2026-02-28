@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>flowax</id>
+    <version>7.6.0</version>
+    <title>FloWax</title>
+    <authors>KBC</authors>
+    <description>Instalador do FloWax</description>
+  </metadata>
+</package>

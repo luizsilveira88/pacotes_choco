@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>olga</id>
+    <version>2026.1.0</version>
+    <title>Olga</title>
+    <authors>SLB</authors>
+    <description>Instalador do Olga</description>
+  </metadata>
+</package>

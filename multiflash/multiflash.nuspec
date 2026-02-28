@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>multiflash</id>
+    <version>7.6.13</version>
+    <title>MultiFlash</title>
+    <authors>KBC</authors>
+    <description>Instalador do MultiFlash</description>
+    <tags>multiflash instalador</tags>
+  </metadata>
+</package>

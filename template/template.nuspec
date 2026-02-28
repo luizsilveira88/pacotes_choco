@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>nome_pacote</id>
+    <version>0.0.0</version>
+    <title>Nome_pacote</title>
+    <authors>Autor</authors>
+    <description>Instalador do Nome_pacote</description>
+  </metadata>
+</package>

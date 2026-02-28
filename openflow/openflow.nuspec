@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>openflow</id>
+    <version>2024.0.0</version>
+    <title>OpenFlow</title>
+    <authors>Beicip</authors>
+    <description>Instalador do OpenFlow</description>
+    <tags>openflow instalador</tags>
+  </metadata>
+</package>

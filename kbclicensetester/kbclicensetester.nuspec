@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>kbclicensetester</id>
+    <version>7.0.7500</version>
+    <title>KBC License Tester</title>
+    <authors>KBC</authors>
+    <description>Instalador do KBC License Tester</description>
+    <tags>kbclicensetester instalador</tags>
+  </metadata>
+</package>

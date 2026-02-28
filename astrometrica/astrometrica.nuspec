@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+  <metadata>
+    <id>astrometrica</id>
+    <version>4.10.6.453</version>
+    <title>Astrometrica</title>
+    <authors>IASC</authors>
+    <owners>IASC</owners>
+    <summary>Astrometrica - software for astrometric measurements</summary>
+    <description>
+Astrometrica is used for astrometric and photometric measurements of astronomical images.
+    </description>
+    <projectUrl>https://iasc.cosmosearch.org</projectUrl>
+    <licenseUrl>https://iasc.cosmosearch.org</licenseUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <tags>astronomy astrometry iasc</tags>
+  </metadata>
+</package>

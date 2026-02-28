@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>maximus</id>
+    <version>7.6.0</version>
+    <title>Maximus</title>
+    <authors>KBC</authors>
+    <description>Instalador do Maximus</description>
+    <dependencies>
+      <dependency id="vcredist2005" />
+    </dependencies>
+  </metadata>
+</package>

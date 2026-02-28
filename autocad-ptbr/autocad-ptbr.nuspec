@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>autocad-ptbr</id>
+    <version>2026</version>
+    <title>AutoCAD PT-BR</title>
+    <authors>Autodesk</authors>
+    <licenseUrl>https://www.autodesk.com/company/terms-of-use/en/general-terms</licenseUrl>
+    <projectUrl>https://www.autodesk.com/products/autocad/</projectUrl>
+    <iconUrl>https://cdn.jsdelivr.net/gh/andreasmalta/choco_packages@master/autocad/icon.png</iconUrl>
+    <description>AutoCAD is computer-aided design (CAD) software that is used for precise 2D and 3D drafting, design, and modeling with solids, surfaces, mesh objects, documentation features, and more. It includes features to automate tasks and increase productivity such as comparing drawings, counting, adding objects, and creating tables. It also comes with seven industry-specific toolsets for electrical design, plant design, architecture layout drawings, mechanical design, 3D mapping, adding scanned images, and converting raster images. AutoCAD enables users to create, edit, and annotate drawings via desktop, web, and mobile devices.</description>
+  </metadata>
+</package>

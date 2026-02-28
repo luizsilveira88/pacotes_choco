@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>pipesim</id>
+    <version>2026.1.388</version>
+    <title>Pipesim</title>
+    <authors>autor</authors>
+    <description>Instalador do Pipesim</description>
+    <tags>Pipesim instalador</tags>
+  </metadata>
+</package>

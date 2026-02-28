@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>petrosim</id>
+    <version>7.6.0</version>
+    <title>PetroSim</title>
+    <authors>Autor</authors>
+    <description>Instalador do PetroSim</description>
+  </metadata>
+</package>

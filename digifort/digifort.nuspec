@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>digifort</id>
+    <version>7.3.0</version>
+    <title>Digifort</title>
+    <authors>Beicip</authors>
+    <description>Instalador do Digifort</description>
+    <tags>digifort instalador</tags>
+  </metadata>
+</package>
