@@ -30,7 +30,7 @@ $localExePath = Join-Path $toolsDir $installerName
 # =====================================================
 # REMOÇÃO DE LEGADOS (SE NECESSARIO)
 # =====================================================
-$legacyDisplayName = "*$packageId*"
+$legacyDisplayName = "*$packageTitle*"
 $legacyApp = Get-LegacyInstall $legacyDisplayName
 
 if ($legacyApp) {
@@ -38,6 +38,15 @@ if ($legacyApp) {
 }
 else {
     Log "Nenhuma instalação legada detectada."
+}
+
+# KBC Explorer
+
+$legacyDisplayName = "*KBC Explorer*"
+$legacyApp = Get-LegacyInstall $legacyDisplayName
+
+if ($legacyApp) {
+    Uninstall-Legacy $legacyApp
 }
 
 # =====================================================

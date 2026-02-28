@@ -3,8 +3,8 @@
   <metadata>
     <id>petrosim</id>
     <version>7.6.0</version>
-    <title>PetroSim</title>
+    <title>Petro-Sim</title>
     <authors>Autor</authors>
-    <description>Instalador do PetroSim</description>
+    <description>Instalador do Petro-Sim</description>
   </metadata>
 </package>
