@@ -98,5 +98,9 @@ Log "Instalação concluída com sucesso!"
 
 [Environment]::SetEnvironmentVariable("ALFASIM_PLUGINS_DIR", $destPlugins, "Machine")
 [Environment]::SetEnvironmentVariable("ESSS_LICENSE_FILE", "1515@10.80.16.4", "Machine")
-
 Log "Variáveis de ambiente configuradas com sucesso."
+
+# ------------------------------------------------------
+# Criar atalhos
+# ------------------------------------------------------
+Move-ShortcutToPublicDesktop $packageTitle

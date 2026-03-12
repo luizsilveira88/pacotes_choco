@@ -29,33 +29,39 @@ function Get-LegacyInstall {
         Select-Object -First 1
 }
 
-function Remove-PublicDesktopShortcuts {
+function Remove-Shortcuts {
     param(
         [string]$AppName
     )
 
-    $publicDesktop = "$env:PUBLIC\Desktop"
+    $paths = @(
+        "$env:PUBLIC\Desktop",
+        "$env:USERPROFILE\Desktop"
+    )
 
-    if (-not (Test-Path $publicDesktop)) {
-        Log "Área de trabalho pública não encontrada."
-        return
-    }
+    foreach ($path in $paths) {
 
-    $shortcuts = Get-ChildItem $publicDesktop -Filter "*.lnk" -ErrorAction SilentlyContinue |
-        Where-Object { $_.Name -like "*$AppName*" }
-
-    if (-not $shortcuts) {
-        Log "Nenhum atalho antigo encontrado na área de trabalho pública."
-        return
-    }
-
-    foreach ($shortcut in $shortcuts) {
-        try {
-            Remove-Item $shortcut.FullName -Force -ErrorAction Stop
-            Log "Atalho removido: $($shortcut.Name)"
+        if (-not (Test-Path $path)) {
+            Log "Área de trabalho não encontrada em: $path"
+            continue
         }
-        catch {
-            Log "Erro ao remover atalho: $($shortcut.Name)"
+
+        $shortcuts = Get-ChildItem $path -Filter "*.lnk" -ErrorAction SilentlyContinue |
+            Where-Object { $_.Name -like "*$AppName*" }
+
+        if (-not $shortcuts) {
+            Log "Nenhum atalho encontrado em: $path"
+            continue
+        }
+
+        foreach ($shortcut in $shortcuts) {
+            try {
+                Remove-Item $shortcut.FullName -Force -ErrorAction Stop
+                Log "Atalho removido ($path): $($shortcut.Name)"
+            }
+            catch {
+                Log "Erro ao remover atalho ($path): $($shortcut.Name)"
+            }
         }
     }
 }
@@ -63,23 +69,93 @@ function Remove-PublicDesktopShortcuts {
 function Uninstall-Legacy {
     param($app)
 
-    if (-not $app.UninstallString) {
-        Log "Legado encontrado, mas sem UninstallString. Pulando."
+    # Prioriza QuietUninstallString
+    $uninstallCmd = $null
+
+    if ($app.QuietUninstallString) {
+        $uninstallCmd = $app.QuietUninstallString
+        Log "Usando QuietUninstallString para desinstalação."
+    }
+    elseif ($app.UninstallString) {
+        $uninstallCmd = $app.UninstallString
+        Log "QuietUninstallString não encontrada. Usando UninstallString."
+    }
+    else {
+        Log "Legado encontrado, mas sem string de desinstalação. Pulando."
         return
     }
 
     Log "Desinstalando versão antiga: $($app.DisplayName)"
 
-    if ($app.UninstallString -match "msiexec") {
-        $guid = ($app.UninstallString -replace '.*\{','{' -replace '\}.*','}')
-        Start-Process "msiexec.exe" -ArgumentList "/x $guid /qn /norestart" -Wait
+    try {
+
+        # Caso seja MSI
+        if ($uninstallCmd -match "msiexec") {
+
+            # Extrai GUID se existir
+            if ($uninstallCmd -match "\{[A-F0-9\-]+\}") {
+                $guid = $matches[0]
+                Start-Process "msiexec.exe" `
+                    -ArgumentList @("/x", $guid, "/qn", "/norestart") `
+                    -Wait -ErrorAction Stop
+            }
+            else {
+                Start-Process "cmd.exe" `
+                    -ArgumentList "/c $uninstallCmd" `
+                    -Wait -ErrorAction Stop
+            }
+        }
+        else {
+            Start-Process "cmd.exe" `
+                -ArgumentList "/c $uninstallCmd" `
+                -Wait -ErrorAction Stop
+        }
+
+        Log "Legado removido com sucesso."
+
+        # Remover atalhos antigos
+        Remove-Shortcuts -AppName $app.DisplayName
     }
-    else {
-        Start-Process "cmd.exe" -ArgumentList "/c $($app.UninstallString)" -Wait
+    catch {
+        Log "Erro durante desinstalação do legado: $($app.DisplayName)"
+    }
+}
+
+function Move-ShortcutToPublicDesktop {
+    param(
+        [string]$AppName
+    )
+
+    $userDesktop   = "$env:USERPROFILE\Desktop"
+    $publicDesktop = "$env:PUBLIC\Desktop"
+
+    if (-not (Test-Path $userDesktop)) {
+        Log "Área de trabalho do usuário não encontrada."
+        return
     }
 
-    Log "Legado removido com sucesso."
+    if (-not (Test-Path $publicDesktop)) {
+        Log "Área de trabalho pública não encontrada."
+        return
+    }
 
-    # Remover atalhos antigos
-    Remove-PublicDesktopShortcuts -AppName $app.DisplayName
+    $shortcuts = Get-ChildItem $userDesktop -Filter "*.lnk" -ErrorAction SilentlyContinue |
+        Where-Object { $_.Name -like "*$AppName*" }
+
+    if (-not $shortcuts) {
+        Log "Nenhum atalho encontrado na área de trabalho do usuário."
+        return
+    }
+
+    foreach ($shortcut in $shortcuts) {
+        $destination = Join-Path $publicDesktop $shortcut.Name
+
+        try {
+            Move-Item $shortcut.FullName $destination -Force -ErrorAction Stop
+            Log "Atalho movido para área pública: $($shortcut.Name)"
+        }
+        catch {
+            Log "Erro ao mover atalho: $($shortcut.Name)"
+        }
+    }
 }
