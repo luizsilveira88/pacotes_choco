@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>cmg</id>
+    <version>2026.11.0</version>
+    <title>CMG</title>
+    <authors>CMG</authors>
+    <description>Instalador do CMG</description>
+  </metadata>
+</package>
