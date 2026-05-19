@@ -25,7 +25,7 @@ $installerName = "$packageId-$packageVersion$installerExtension"
 $toolsDir     = Split-Path -Parent $MyInvocation.MyCommand.Definition
 $networkPath  = "\\179.97.96.73\repositorio$\installers\$packageId\$installerName"
 $localExePath = Join-Path $toolsDir $installerName
-. "$toolsDir\helpers.ps1"
+. "$toolsDir\helpers-1.0.0.ps1"
 
 # =====================================================
 # REMOÇÃO DE LEGADOS (SE NECESSARIO)
