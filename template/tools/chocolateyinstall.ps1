@@ -28,23 +28,6 @@ $localExePath = Join-Path $toolsDir $installerName
 . "$toolsDir\helpers.ps1"
 
 # =====================================================
-# FUNÇÕES AUXILIARES
-# =====================================================
-function Log($msg) {
-    Write-Host "[$packageTitle] $msg"
-}
-
-function Get-Hash($file) {
-    try { (Get-FileHash $file -Algorithm SHA256).Hash }
-    catch { $null }
-}
-
-function Hash-Valid($file, $expected) {
-    $hash = Get-Hash $file
-    return ($hash -and $hash -eq $expected)
-}
-
-# =====================================================
 # COPIAR INSTALADOR SE NECESSÁRIO
 # =====================================================
 $needCopy = $true
