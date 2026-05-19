@@ -27,6 +27,29 @@ $toolsDir     = Split-Path -Parent $MyInvocation.MyCommand.Definition
 $networkPath  = "\\179.97.96.73\repositorio$\installers\$packageId\$zipPath"
 $extractPath = Join-Path $toolsDir 'extracted'
 $localZipPath = Join-Path $toolsDir $zipPath
+. "$toolsDir\helpers-1.0.0.ps1"
+
+# =====================================================
+# REMOÇÃO DE LEGADOS (SE NECESSARIO)
+# =====================================================
+$legacyDisplayName = "*$packageId*"
+$legacyApp = Get-LegacyInstall $legacyDisplayName
+
+if ($legacyApp) {
+    Uninstall-Legacy $legacyApp
+}
+else {
+    Log "Nenhuma instalação legada detectada."
+}
+
+# Pipesim Python Toolkit
+
+$legacyDisplayName = "*Pipesim Python Toolkit*"
+$legacyApp = Get-LegacyInstall $legacyDisplayName
+
+if ($legacyApp) {
+    Uninstall-Legacy $legacyApp
+}
 
 # =====================================================
 # FUNÇÕES AUXILIARES
