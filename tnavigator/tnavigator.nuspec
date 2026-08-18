@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>tnavigator</id>
+    <version>1.0.0</version>
+    <title>TNavigator</title>
+    <authors>Rock Flow Dynamics</authors>
+    <description>Instalador do TNavigator (sem instalador convencional: copia a pasta extraída para C:\Program Files e o atalho para a área de trabalho de todos os usuários)</description>
+    <tags>TNavigator instalador</tags>
+  </metadata>
+</package>
