@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>petrel</id>
+    <version>2024.0.0</version>
+    <title>Petrel</title>
+    <authors>SLB</authors>
+    <description>Instalador do SLB</description>
+    <tags>petrel instalador</tags>
+  </metadata>
+</package>
