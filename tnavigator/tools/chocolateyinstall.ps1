@@ -30,7 +30,7 @@ $toolsDir     = Split-Path -Parent $MyInvocation.MyCommand.Definition
 $networkPath  = "\\179.97.96.73\repositorio$\installers\$packageId\$zipPath"
 $extractPath = Join-Path $toolsDir 'extracted'
 $localZipPath = Join-Path $toolsDir $zipPath
-. "$toolsDir\helpers-1.0.0.ps1"
+. "$toolsDir\helpers.ps1"
 
 # =====================================================
 # COPIAR INSTALADOR SE NECESSÁRIO

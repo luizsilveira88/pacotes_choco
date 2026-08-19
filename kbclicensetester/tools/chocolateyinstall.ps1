@@ -27,25 +27,14 @@ $networkPath  = "\\179.97.96.73\repositorio$\installers\$packageId\$installerNam
 $localExePath = Join-Path $toolsDir $installerName
 
 # =====================================================
-# FUNÇÕES AUXILIARES
+# FUNCOES AUXILIARES (helper compartilhada: tools\helpers.ps1)
 # =====================================================
-function Log($msg) {
-    Write-Host "[$packageTitle] $msg"
-}
-
-function Get-Hash($file) {
-    try { (Get-FileHash $file -Algorithm SHA256).Hash }
-    catch { $null }
-}
-
-function Hash-Valid($file, $expected) {
-    $hash = Get-Hash $file
-    return ($hash -and $hash -eq $expected)
-}
+. "$toolsDir\helpers.ps1"
 
 # =====================================================
-# COPIAR INSTALADOR SE NECESSÁRIO
+# COPIAR INSTALADOR SE NECESSARIO
 # =====================================================
+
 $needCopy = $true
 
 if (Test-Path $localExePath) {

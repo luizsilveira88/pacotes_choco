@@ -27,7 +27,7 @@ $toolsDir     = Split-Path -Parent $MyInvocation.MyCommand.Definition
 $networkPath  = "\\179.97.96.73\repositorio$\installers\$packageId\$zipPath"
 $extractPath = Join-Path $toolsDir 'extracted'
 $localZipPath = Join-Path $toolsDir $zipPath
-. "$toolsDir\helpers-1.0.0.ps1"
+. "$toolsDir\helpers.ps1"
 
 # =====================================================
 # REMOÇÃO DE LEGADOS (SE NECESSARIO)
@@ -49,23 +49,6 @@ $legacyApp = Get-LegacyInstall $legacyDisplayName
 
 if ($legacyApp) {
     Uninstall-Legacy $legacyApp
-}
-
-# =====================================================
-# FUNÇÕES AUXILIARES
-# =====================================================
-function Log($msg) {
-    Write-Host "[$packageTitle] $msg"
-}
-
-function Get-Hash($file) {
-    try { (Get-FileHash $file -Algorithm SHA256).Hash }
-    catch { $null }
-}
-
-function Hash-Valid($file, $expected) {
-    $hash = Get-Hash $file
-    return ($hash -and $hash -eq $expected)
 }
 
 # =====================================================

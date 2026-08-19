@@ -15,8 +15,14 @@ Estrutura típica de um pacote:
 └── tools/
     ├── chocolateyinstall.ps1    # Script de instalação
     ├── chocolateyuninstall.ps1  # Script de desinstalação (quando aplicável)
-    └── helpers.ps1 / helpers-1.0.0.ps1  # Funções auxiliares (log, validação de hash, etc.)
+    └── helpers.ps1                # Funções auxiliares (log, validação de hash, etc.) — sincronizado via pack.ps1
 ```
+
+As funções auxiliares (log, validação de hash, remoção de legados, etc.) têm **fonte única**
+em `_shared/helpers.ps1` e são sincronizadas para dentro de cada pacote (`tools/helpers.ps1`)
+pelo script `pack.ps1`. Não edite `tools/helpers.ps1` manualmente: altere `_shared/helpers.ps1`
+e rode `.\pack.ps1 -SyncOnly`. O pacote `autocad-ptbr` tem helper específica própria e é
+excluído dessa sincronização.
 
 A maioria dos scripts de instalação segue o mesmo padrão:
 1. Busca o instalador em um compartilhamento de rede (`\\179.97.96.73\repositorio$\installers\<pacote>\`);
@@ -49,6 +55,18 @@ A pasta `template/` serve como modelo (`nome_pacote`, versão `0.0.0`) para a cr
 
 ### Empacotar (gerar o `.nupkg`)
 
+O comando recomendado é o `pack.ps1` da raiz, que **sincroniza a helper compartilhada** antes de empacotar:
+
+```powershell
+cd c:\dev\pacotes_choco
+
+.\pack.ps1                      # sincroniza _shared/helpers.ps1 e gera todos os .nupkg
+.\pack.ps1 -SyncOnly            # apenas propaga a helper, sem empacotar
+.\pack.ps1 -Target flowax,petrel   # somente alguns pacotes
+```
+
+Também é possível empacotar um pacote isoladamente com o `choco pack` tradicional:
+
 ```powershell
 cd <pacote>
 choco pack
@@ -71,7 +89,7 @@ choco install <pacote> --source="'C:\dev\pacotes_choco\<pacote>'" -y
 1. Copie a pasta `template/` para uma nova pasta com o nome do pacote (em minúsculas, sem espaços).
 2. Renomeie e edite o `template.nuspec` (`id`, `version`, `title`, `authors`, `description`, `tags`).
 3. Ajuste `tools/chocolateyinstall.ps1` com o tipo de arquivo (`fileType`), o hash SHA256 esperado (`expectedHash`) e os argumentos de instalação silenciosa (`silentArgs`).
-4. Gere o pacote com `choco pack` dentro da pasta do novo pacote.
+4. Gere o pacote com `.\pack.ps1 -Target <nome>` (sincroniza a helper e gera o `.nupkg`) ou `choco pack` dentro da pasta do novo pacote.
 
 ## Requisitos
 

@@ -9,7 +9,7 @@ $packageTitle = $env:ChocolateyPackageTitle
 # Caminhos
 # =====================================================
 $toolsDir    = Split-Path -Parent $MyInvocation.MyCommand.Definition
-. "$toolsDir\helpers-1.0.0.ps1"
+. "$toolsDir\helpers.ps1"
 
 # =====================================================
 # REMOVE A PASTA COPIADA EM PROGRAM FILES
