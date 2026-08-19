@@ -46,7 +46,9 @@ A pasta `template/` serve como modelo (`nome_pacote`, versão `0.0.0`) para a cr
 | `maximus` | Maximus | 7.6.0 | KBC |
 | `multiflash` | MultiFlash | 7.6.13 | KBC |
 | `olga` | Olga | 2026.1.0 | SLB |
-| `openflow` | OpenFlow | 2024.0.0 | Beicip |
+| `openflow` | OpenFlow | 2024.0.0 (sempre a versão mais recente) | Beicip |
+| `openflow-2023` | OpenFlow 2023 | 2023.0.0 | Beicip |
+| `openflow-2024` | OpenFlow 2024 | 2024.0.0 | Beicip |
 | `petrel` | Petrel | 2024.0.0 | SLB |
 | `petrosim` | Petro-Sim | 7.6.0 | — |
 | `pipesim` | Pipesim | 2026.1.388 | — |

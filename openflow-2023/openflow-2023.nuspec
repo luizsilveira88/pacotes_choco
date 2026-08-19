@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>openflow-2023</id>
+    <version>2023.0.0</version>
+    <title>OpenFlow 2023</title>
+    <authors>Beicip</authors>
+    <description>Instalador do OpenFlow 2023</description>
+    <tags>openflow 2023 instalador</tags>
+  </metadata>
+</package>
