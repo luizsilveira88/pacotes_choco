@@ -12,7 +12,7 @@ Repositório de pacotes corporativos [Chocolatey](https://chocolatey.org/)(.nusp
 ## Helper (REGRA DE OURO)
 - Edite SOMENTE `_shared\helpers.ps1`; rode `.\pack.ps1 -SyncOnly` para propagar.
 - Nunca crie/edite `tools\helpers.ps1` manualmente; sempre importe com `. "$toolsDir\helpers.ps1"`.
-- Fornece: `Log`, `Get-Hash`, `Hash-Valid`, `Get-LegacyInstall`, `Uninstall-Legacy`, `Remove-Shortcuts`, `Move-ShortcutToPublicDesktop`.
+- Fornece: `Log`, `Get-Hash`, `Hash-Valid`, `Get-LegacyInstall`, `Uninstall-Legacy`, `Remove-Shortcuts`, `Move-ShortcutToPublicDesktop`, `Remove-PathTolerant`.
 - Exceção: `autocad-ptbr` tem helper própria e NÃO é sincronizada.
 
 ## chocolateyinstall.ps1 (ordem fixa)
@@ -41,3 +41,8 @@ Copia `template\` → edita `.nuspec` → ajusta `fileType/expectedHash/silentAr
 - [ ] `fileType`/`expectedHash`/`silentArgs` e `validExitCodes` corretos
 - [ ] `.nupkg` regenerado via `choco pack`/`pack.ps1`
 - [ ] `autocad-ptbr` e `template` intocados
+
+## Limpeza de temporários (padrão do repositório)
+- Após a instalação, remova payload/extração/XML com `Remove-PathTolerant` (helper). NUNCA `Remove-Item -Recurse -Force` direto sob `$ErrorActionPreference='Stop'` (arquivo em uso derruba o pacote).
+- `Remove-PathTolerant` tenta 3 vezes com espera; se ainda falhar, loga aviso e mantém o arquivo para diagnóstico — o pacote continua instalado.
+- Instaladores assíncronos (ex.: Office Click-to-Run com `setup.exe /configure`) retornam antes do fim: aguarde os processos `OfficeClickToRun`/`OfficeC2RClient` terminar antes de limpar (ver `office-2024`).

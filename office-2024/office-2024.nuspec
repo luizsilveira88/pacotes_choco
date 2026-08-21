@@ -1,0 +1,11 @@
+﻿<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>office-2024</id>
+    <version>2024.0.0</version>
+    <title>Microsoft Office LTSC 2024</title>
+    <authors>Microsoft</authors>
+    <description>Instalador do Microsoft Office LTSC 2024 (setup.exe /configure). O payload office-2024.zip e o arquivo de configuração office-2024.xml são obtidos do repositório corporativo durante a instalação, e os arquivos temporários são removidos ao final.</description>
+    <tags>office 2024 ltsc instalador</tags>
+  </metadata>
+</package>

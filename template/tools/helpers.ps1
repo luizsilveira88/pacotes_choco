@@ -1,4 +1,4 @@
-# =====================================================
+﻿# =====================================================
 # FUNÇÕES AUXILIARES
 # =====================================================
 function Log($msg) {
@@ -158,4 +158,30 @@ function Move-ShortcutToPublicDesktop {
             Log "Erro ao mover atalho: $($shortcut.Name)"
         }
     }
+}
+function Remove-PathTolerant {
+    param(
+        [string]$Path,
+        [int]$Tries = 3,
+        [int]$DelaySeconds = 2
+    )
+
+    for ($i = 1; $i -le $Tries; $i++) {
+        try {
+            Remove-Item -LiteralPath $Path -Recurse -Force -ErrorAction Stop
+            Log "Removido: $Path"
+            return $true
+        }
+        catch {
+            if ($i -lt $Tries) {
+                Start-Sleep -Seconds $DelaySeconds
+            }
+            else {
+                Log "AVISO: nao foi possivel remover '$Path' (mantido para diagnostico). Erro: $($_.Exception.Message). Remova manualmente se necessario."
+                return $false
+            }
+        }
+    }
+
+    return $false
 }

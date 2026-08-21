@@ -49,6 +49,7 @@ A pasta `template/` serve como modelo (`nome_pacote`, versão `0.0.0`) para a cr
 | `openflow` | OpenFlow | 2024.0.0 (sempre a versão mais recente) | Beicip |
 | `openflow-2023` | OpenFlow 2023 | 2023.0.0 | Beicip |
 | `openflow-2024` | OpenFlow 2024 | 2024.0.0 | Beicip |
+| `office-2024` | Microsoft Office LTSC 2024 | 2024.0.0 | Microsoft |
 | `petrel` | Petrel | 2024.0.0 | SLB |
 | `petrosim` | Petro-Sim | 7.6.0 | — |
 | `pipesim` | Pipesim | 2026.1.388 | — |
