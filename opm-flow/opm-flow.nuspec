@@ -1,0 +1,11 @@
+﻿<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>opm-flow</id>
+    <version>2026.4.1</version>
+    <title>OPM Flow</title>
+    <authors>Open Porous Media Initiative</authors>
+    <description>Runtime do OPM Flow (simulador de reservatórios via Docker). Instala em C:\OPM, adiciona C:\OPM\bin ao PATH de máquina e depende do Docker Desktop.</description>
+    <tags>opm-flow opm docker runtime instalador</tags>
+  </metadata>
+</package>
