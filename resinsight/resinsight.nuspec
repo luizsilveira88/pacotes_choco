@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>resinsight</id>
+    <version>2026.6.1</version>
+    <title>ResInsight</title>
+    <authors>Equinor / Open Porous Media Initiative</authors>
+    <description>Visualizador e análise de resultados de simulação de reservatórios (ResInsight). Instala em C:\resinsight, concede leitura/execução para todos os usuários e cria atalho no desktop público.</description>
+    <tags>resinsight opm reservatorio visualizador sinte instalador</tags>
+  </metadata>
+</package>

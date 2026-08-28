@@ -54,6 +54,7 @@ A pasta `template/` serve como modelo (`nome_pacote`, versão `0.0.0`) para a cr
 | `petrel` | Petrel | 2024.0.0 | SLB |
 | `petrosim` | Petro-Sim | 7.6.0 | — |
 | `pipesim` | Pipesim | 2026.1.388 | — |
+| `resinsight` | ResInsight | 2026.6.1 | Equinor / Open Porous Media Initiative |
 
 ## Como usar
 
