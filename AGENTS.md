@@ -30,6 +30,10 @@ Repositório de pacotes corporativos [Chocolatey](https://chocolatey.org/)(.nusp
 ## Novo pacote
 Copia `template\` → edita `.nuspec` → ajusta `fileType/expectedHash/silentArgs` no `chocolateyinstall.ps1` → `.\pack.ps1 -Target <nome>` → `choco install <nome> -s . -y`.
 
+## Publicação (pós-empacotamento)
+- Após concluir e validar o pacote, SEMPRE pergunte ao usuário se deseja publicar o pacote.
+- Se sim, copie o `.nupkg` gerado para `\\179.97.96.73\repositorio$\packages` (ex.: `Copy-Item -LiteralPath "<pacote>.<versao>.nupkg" -Destination "\\179.97.96.73\repositorio$\packages"`).
+
 ## Encoding e boas práticas
 - `.ps1` em UTF-8 com BOM (sem BOM, o PS 5.1 corrompe acentos).
 - Nunca edite `.nupkg`; regenere com `choco pack`/`pack.ps1`.
